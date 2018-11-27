@@ -1,0 +1,31 @@
+<div>
+  <!-- <input type="text" id="addressBox" placeholder="Address"/>
+  <p>{{name}}</p> -->
+  <p>Address<input type="text" id="addr" [(ngModel)] = "address" placeholder="Address"></p>
+  <button id="theButton" (click)='getAddress()'>click me</button>
+  
+
+  <div *ngIf="displayData">
+    <div *ngFor="let name of outputArray">
+      <img [src]="name.photo" style="width:250px;height:300px;"/>
+      <table>
+        <div>
+          <ul>
+            <li>Office: {{name.name}}</li>
+            <li>Official: {{name.person}}</li>
+            <li>Party: {{name.party}}</li>
+            <!-- <td>{{name.photo}}</td> -->
+            <!-- <td>{{name.url}}</td> -->
+            <li>
+              <a href="{{name.url}}">HomePage</a>
+            </li>
+            
+          </ul>
+        </div>
+          
+      </table>
+    </div>
+  </div>
+
+
+</div>
