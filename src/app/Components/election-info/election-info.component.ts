@@ -25,17 +25,24 @@ export class ElectionInfoComponent implements OnInit {
     
   }
 
-  getAddress() {
+  reset() {
+    this.outputArray = [];
+    this.displayData = false;
+    this.restItems = null;
+  }
+
+  getElection() {
     
     //convert the address into a url compatable format
+    this.reset();
     var re = / /gi;
     var str = this.address;
     this.urlAddress = str.replace(re, "%20");
 
-    //build the url
-    this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/elections?address=${this.address}
-    &includeOffices=true&levels=country&${this.apiKey}`;
-    
+    // this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/elections?electionid=2000&address=${this.address}
+    // &includeOffices=true&levels=country&${this.apiKey}`;
+    this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/elections?${this.apiKey}&address=${this.urlAddress}`;
+    //this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/voterinfo?${this.apiKey}&address=${this.urlAddress}&electionId=2000`
     // log results
     console.log(this.address);
     console.log(this.urlAddress);
@@ -53,17 +60,8 @@ export class ElectionInfoComponent implements OnInit {
   getRestItems(): void {
     this.restItemsServiceGetRestItems().subscribe(restItems => {
       this.restItems = restItems;
-      for(let i = 0; i < this.restItems.offices.length; i++){
-        this.outputArray[i] = {
-          name: this.restItems.offices[i].name,
-          person: this.restItems.officials[i].name,
-          party: this.restItems.officials[i].party,
-          photo: this.restItems.officials[i].photoUrl,
-          url: this.restItems.officials[i].urls[0],
-        };
-      }
+      
       console.log(this.restItems);
-      console.log(this.outputArray);
     })
   }
 

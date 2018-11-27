@@ -26,15 +26,22 @@ export class CivicInfoComponent implements OnInit {
     
   }
 
+  reset() {
+    this.outputArray = [];
+    this.displayData = false;
+    this.restItems = null;
+  }
+
   getAddress() {
     
     //convert the address into a url compatable format
+    this.reset();
     var re = / /gi;
     var str = this.address;
     this.urlAddress = str.replace(re, "%20");
 
     //build the url
-    this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/representatives?address=${this.address}
+    this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/representatives?address=${this.urlAddress}
     &includeOffices=true&levels=country&${this.apiKey}`;
     
     // log results
