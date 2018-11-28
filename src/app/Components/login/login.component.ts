@@ -41,6 +41,9 @@ export class LoginComponent implements OnInit {
     
     this.loginUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/users/login?username=${this.username}&password=${this.password}`
 
+    // Stephen's local, non-git URL
+    //this.loginUrl = `http://localhost:8080/Proj2Vote/login?username=${this.username}&password=${this.password}`
+
     this.loginUserService().subscribe(result => {
       this.result = result;
       console.log(this.result);
