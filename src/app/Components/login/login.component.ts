@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     console.log(this.username);
     console.log(this.password);
     
-    this.loginUrl = `http://ec2-54-172-11-155.compute-1.amazonaws.com:8082/Proj2vote/login?username=${this.username}&password=${this.password}`
+    this.loginUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/users/login?username=${this.username}&password=${this.password}`
 
     this.loginUserService().subscribe(result => {
       this.result = result;

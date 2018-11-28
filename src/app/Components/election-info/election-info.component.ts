@@ -41,8 +41,8 @@ export class ElectionInfoComponent implements OnInit {
 
     // this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/elections?electionid=2000&address=${this.address}
     // &includeOffices=true&levels=country&${this.apiKey}`;
-    this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/elections?${this.apiKey}&address=${this.urlAddress}`;
-    //this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/voterinfo?${this.apiKey}&address=${this.urlAddress}&electionId=2000`
+    //this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/elections?${this.apiKey}&address=${this.urlAddress}`;
+    this.restItemsUrl = `https://www.googleapis.com/civicinfo/v2/voterinfo?${this.apiKey}&address=${this.urlAddress}&electionId=2000`
     // log results
     console.log(this.address);
     console.log(this.urlAddress);
