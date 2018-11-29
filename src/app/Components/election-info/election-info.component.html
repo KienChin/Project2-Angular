@@ -8,7 +8,6 @@
 
   <div *ngIf="displayData">
     <div *ngFor="let name of generalElections">
-      
         <div>
           
             <div>Office: {{name.office}}</div>
@@ -18,6 +17,7 @@
               <ol>Party: {{can.party}}</ol>
               <ol>
                 <a href="{{can.candidateUrl}}" class="btn btn-info" role="button">Home Page</a>
+                <app-bookmark url="{{can.candidateUrl}}" name="{{can.name}}"></app-bookmark>
               </ol>
             </div>
             
