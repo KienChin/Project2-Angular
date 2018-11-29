@@ -8,6 +8,7 @@ import { ElectionInfoComponent } from './Components/election-info/election-info.
 import { LoginComponent } from './Components/login/login.component';
 import { CreateUserComponent } from './Components/create-user/create-user.component';
 import { BookmarkComponent } from './Components/bookmark/bookmark.component';
+import { DisplayBookmarksComponent } from './Components/display-bookmarks/display-bookmarks.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { BookmarkComponent } from './Components/bookmark/bookmark.component';
     ElectionInfoComponent,
     LoginComponent,
     CreateUserComponent,
-    BookmarkComponent
+    BookmarkComponent,
+    DisplayBookmarksComponent
   ],
   imports: [
     BrowserModule,
