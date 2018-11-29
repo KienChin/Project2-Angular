@@ -25,12 +25,12 @@ export class BookmarkComponent implements OnInit {
     let str = this.name;
     let urlName = str.replace(re, "%20");
     this.bookUrl = `${this.baseUrl}?name=${urlName}&url=${this.url}`
-    // let body = {
-    //   name = this.name,
-    //   url = this.url
-    // }
+    let body = {
+      name: this.name,
+      url: this.url
+    }
     console.log(this.bookUrl);
-    this.http.post<any[]>(this.bookUrl, "");
+    this.http.post<any[]>(this.bookUrl, body);
     
   }
   
