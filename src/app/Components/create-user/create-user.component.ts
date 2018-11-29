@@ -8,19 +8,16 @@ import { map } from 'rxjs/operators'
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
+  
+  firstname = '';
+  lastname = '';
   username = '';
   password = '';
   email = '';
   address = '';
   result: any;
-  createUserUrl = '';
-  User = {
-    username: '',
-    password: '',
-    email: '',
-    address: ''
-  }
-
+  createUserUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/users/create`;
+  User = {}
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -34,18 +31,25 @@ export class CreateUserComponent implements OnInit {
     
   }
 
+  
   submitUser(){
     this.User = {
+      user_id: -1,
       username: this.username,
-      password: this.password,
+      pswd: this.password,
+      fname: this.firstname,
+      lname: this.lastname,
       email: this.email,
-      address: this.address
+      Address: {adr_id: 0,
+                city: '',
+                state: '',
+                str_adr: this.address,
+                zip: 12345
+              },
+      perm: 0
     }
 
-    console.log(this.User.username);
-    console.log(this.User.password);
-    console.log(this.User.email);
-    console.log(this.User.address);
+    console.log(this.User);
     
     this.submitUserService().subscribe(result => {
       this.result = result;
@@ -54,7 +58,6 @@ export class CreateUserComponent implements OnInit {
 
   }
   submitUserService() {
-    return this.http.post<any[]>(this.createUserUrl, this.User, this.httpOptions)
-    .pipe(map(data => data))
+    return this.http.post<any[]>(this.createUserUrl, this.User, this.httpOptions).pipe(map(data => data))
   }
 }
