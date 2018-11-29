@@ -16,7 +16,7 @@ export class ElectionInfoComponent implements OnInit {
   urlAddress: string = '';
   outputArray = [];
   displayData = false;
-
+  generalElections = [];
   
 
   constructor(private http: HttpClient) { }
@@ -61,8 +61,23 @@ export class ElectionInfoComponent implements OnInit {
     this.restItemsServiceGetRestItems().subscribe(restItems => {
       this.restItems = restItems;
       
+      for(let i = 0; i < this.restItems.contests.length; i++){
+        if(this.restItems.contests[i].type == 'General'){
+          this.generalElections[i] = this.restItems.contests[i];
+        }
+      }
+
+      
+
       console.log(this.restItems);
+      console.log(this.restItems.contests[1]);
+      console.log(this.generalElections[0].candidates);
     })
+  }
+
+  getGenerals(): boolean{
+    
+    return true;
   }
 
   restItemsServiceGetRestItems() {

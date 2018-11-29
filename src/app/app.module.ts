@@ -7,6 +7,7 @@ import { CivicInfoComponent } from './Components/civic-info/civic-info.component
 import { ElectionInfoComponent } from './Components/election-info/election-info.component';
 import { LoginComponent } from './Components/login/login.component';
 import { CreateUserComponent } from './Components/create-user/create-user.component';
+import { BookmarkComponent } from './Components/bookmark/bookmark.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CreateUserComponent } from './Components/create-user/create-user.compon
     CivicInfoComponent,
     ElectionInfoComponent,
     LoginComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    BookmarkComponent
   ],
   imports: [
     BrowserModule,

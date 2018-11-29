@@ -1,8 +1,30 @@
 <h2><i class="fas fa-person-booth"></i> Elections</h2>
-<p>
+<div>
   <i class="fas fa-search-location"></i> 
   <input type="text" id="addr" [(ngModel)] = "address" placeholder="address">
   <button id="theButton" (click)='getElection()' class="btn btn-info">
     <i class="fas fa-search-location"></i> 
   </button>
-</p>
+
+  <div *ngIf="displayData">
+    <div *ngFor="let name of generalElections">
+      
+        <div>
+          
+            <div>Office: {{name.office}}</div>
+            <div>Candidates:</div>
+            <div *ngFor="let can of name.candidates">
+              <ol>Name: {{can.name}}</ol>
+              <ol>Party: {{can.party}}</ol>
+              <ol>
+                <a href="{{can.candidateUrl}}" class="btn btn-info" role="button">Home Page</a>
+              </ol>
+            </div>
+            
+            
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
