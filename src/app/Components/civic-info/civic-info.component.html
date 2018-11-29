@@ -9,6 +9,8 @@
   
 
   <div *ngIf="displayData">
+      <button id="theButton" (click)='reset()' class="btn btn-info">clear 
+        </button>
     <div *ngFor="let name of outputArray">
       <img [src]="name.photo" style="width:250px;height:300px;"/>
       <table>
