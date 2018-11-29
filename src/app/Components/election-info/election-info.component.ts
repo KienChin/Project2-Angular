@@ -15,9 +15,10 @@ export class ElectionInfoComponent implements OnInit {
   address: string = '';
   urlAddress: string = '';
   outputArray = [];
-  displayData = false;
+  displayElect = false;
+  displayPoll = false;
   generalElections = [];
-  
+  pollingLocations = [];
 
   constructor(private http: HttpClient) { }
 
@@ -27,11 +28,12 @@ export class ElectionInfoComponent implements OnInit {
 
   reset() {
     this.outputArray = [];
-    this.displayData = false;
+    this.displayElect = false;
+    this.displayPoll = false;
     this.restItems = null;
   }
 
-  getElection() {
+  getItems(items) {
     
     //convert the address into a url compatable format
     this.reset();
@@ -49,29 +51,48 @@ export class ElectionInfoComponent implements OnInit {
     console.log(this.restItemsUrl);
     
     //call the service
-    this.getRestItems();
-
-    //display the table
-    this.displayData = true;
+    this.getRestItems(items);
+  
+    //display the right table
+    if (items == "elections") {
+      this.displayElect = true;
+      this.displayPoll = false;
+    }
+    if (items == "polling") {
+      this.displayElect = false;
+      this.displayPoll = true;
+    }
     
   }
-  
+
   // should be moved to a service
-  getRestItems(): void {
+  getRestItems(items): void {
     this.restItemsServiceGetRestItems().subscribe(restItems => {
       this.restItems = restItems;
-      
-      for(let i = 0; i < this.restItems.contests.length; i++){
-        if(this.restItems.contests[i].type == 'General'){
-          this.generalElections[i] = this.restItems.contests[i];
+      console.log(this.restItems);
+      if (items == "elections") {
+        // populate general elections array
+        for(let i = 0; i < this.restItems.contests.length; i++){
+          if(this.restItems.contests[i].type == 'General'){
+            this.generalElections[i] = this.restItems.contests[i];
+          }
         }
+        console.log(this.restItems.contests[1]);
+        console.log(this.generalElections[0].candidates);
+      }
+      if (items == "polling") { // won't return polling locations if ElectionId is used
+        // populate polling locations array
+        if (this.restItems.pollingLocations == undefined) {
+          console.log("polling locations unavailable or NA");
+        } else {
+          for(let i = 0; i < this.restItems.pollingLocations.length; i++){
+            this.pollingLocations[i] = this.restItems.pollingLocations[i];
+          }
+        }
+        console.log(this.restItems.pollingLocations[1]);
+        console.log(this.pollingLocations[0].name);
       }
 
-      
-
-      console.log(this.restItems);
-      console.log(this.restItems.contests[1]);
-      console.log(this.generalElections[0].candidates);
     })
   }
 
