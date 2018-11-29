@@ -9,24 +9,28 @@
   <div *ngIf="displayData">
     <button id="theButton" (click)='reset()' class="btn btn-info">clear 
     </button>
+    <div>{{normalizedInput}}</div>
     <div *ngFor="let name of generalElections">
-        <div>
-          
-            <div>Office: {{name.office}}</div>
-            <div>Candidates:</div>
-            <div *ngFor="let can of name.candidates">
-              <ol>Name: {{can.name}}</ol>
-              <ol>Party: {{can.party}}</ol>
-              <ol>
-                <a href="{{can.candidateUrl}}" class="btn btn-info" role="button">Home Page</a>
-                <app-bookmark url="{{can.candidateUrl}}" name="{{can.name}}"></app-bookmark>
-              </ol>
-            </div>
-            
-            
-          
-        </div>
       
+      <table>
+          <div>
+            <th>Office: {{name.office}}</th>
+          </div>
+          <div *ngFor="let can of name.candidates">
+            <tr>Name: {{can.name}}</tr>
+            <tr>Party: {{can.party}}</tr>
+            <tr>
+              <a href="{{can.candidateUrl}}" class="btn btn-info" role="button">Home Page</a>
+              <app-bookmark url="{{can.candidateUrl}}" name="{{can.name}}"></app-bookmark>
+            </tr>
+          </div>
+          
+          <br>
+          
+        </table>
+        <div>
+
+        </div>
     </div>
   </div>
 </div>
