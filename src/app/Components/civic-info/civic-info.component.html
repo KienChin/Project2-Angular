@@ -1,8 +1,11 @@
 <div>
   <!-- <input type="text" id="addressBox" placeholder="Address"/>
   <p>{{name}}</p> -->
-  Address<input type="text" id="addr" [(ngModel)] = "address" placeholder="Address">
-  <button id="theButton" (click)='getAddress()'>click me</button>
+  <h2><i class="fas fa-user-tie"></i> Representatives</h2>
+  <input type="text" id="addr" [(ngModel)] = "address" placeholder="address">
+  <button id="theButton" (click)='getAddress()' class="btn btn-info">
+    <i class="fas fa-search-location"></i> 
+  </button>
   
 
   <div *ngIf="displayData">
@@ -17,7 +20,7 @@
             <!-- <td>{{name.photo}}</td> -->
             <!-- <td>{{name.url}}</td> -->
             <li>
-              <a href="{{name.url}}">HomePage</a>
+              <a href="{{name.url}}" class="btn btn-info" role="button">Home Page</a>
             </li>
             
           </ul>

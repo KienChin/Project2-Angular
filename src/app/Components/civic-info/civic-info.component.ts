@@ -13,7 +13,7 @@ export class CivicInfoComponent implements OnInit {
   restItems: any;
   apiKey = 'key=AIzaSyDiJXpugiOVdpurOMtACPLWUxjn6JWSRn8'
   restItemsUrl = '';
-  address: string = '19518 6th Dr SE Bothell WA';
+  address: string = '';
   urlAddress: string = '';
   outputArray = [];
   displayData = false;
