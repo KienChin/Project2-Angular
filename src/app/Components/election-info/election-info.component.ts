@@ -18,7 +18,8 @@ export class ElectionInfoComponent implements OnInit {
   displayElect = false;
   displayPoll = false;
   generalElections = [];
-  pollingLocations = [];
+  pollingLocations = []; // Stephen
+  normalizedInput = ''; // Kien
 
   constructor(private http: HttpClient) { }
 
@@ -69,13 +70,18 @@ export class ElectionInfoComponent implements OnInit {
   getRestItems(items): void {
     this.restItemsServiceGetRestItems().subscribe(restItems => {
       this.restItems = restItems;
+
       console.log(this.restItems);
       if (items == "elections") {
-        // populate general elections array
+        // populate general elections array - Stephen
         for(let i = 0; i < this.restItems.contests.length; i++){
           if(this.restItems.contests[i].type == 'General'){
             this.generalElections[i] = this.restItems.contests[i];
           }
+
+      // Kien
+      this.normalizedInput = this.restItems.normalizedInput.city + ' ' + this.restItems.normalizedInput.line1 + ' ' + this.restItems.normalizedInput.state + ' ' + this.restItems.normalizedInput.zip
+
         }
         console.log(this.restItems.contests[1]);
         console.log(this.generalElections[0].candidates);

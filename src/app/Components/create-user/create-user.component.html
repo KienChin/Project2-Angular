@@ -1,5 +1,11 @@
 <div>
     <div>
+        <input type="text" id="firstname" placeholder="firstname" [(ngModel)] = "firstname"/> 
+    </div>
+    <div>
+        <input type="text" id="lastname" placeholder="lastname" [(ngModel)] = "lastname"/> 
+    </div>
+    <div>
         <input type="text" id="username" placeholder="username" [(ngModel)] = "username"/> 
     </div>
     <div>
@@ -9,7 +15,7 @@
       <input type="text" id="email" placeholder="email" [(ngModel)] = "email"/>
     </div>
     <div>
-      <input type="text" id="address" placeholder="address" [(ngModel)] = "address"/>
+      <input type="text" id="address" placeholder="address/zip" [(ngModel)] = "address"/>
     </div>
     <div>
       <button id="submit" (click)='submitUser()' class="btn btn-primary">Sign Up</button>

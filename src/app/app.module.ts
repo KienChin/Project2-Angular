@@ -27,4 +27,6 @@ import { BookmarkComponent } from './Components/bookmark/bookmark.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

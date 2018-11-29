@@ -9,21 +9,24 @@
   
 
   <div *ngIf="displayData">
+      <button id="theButton" (click)='reset()' class="btn btn-info">clear 
+        </button>
     <div *ngFor="let name of outputArray">
       <img [src]="name.photo" style="width:250px;height:300px;"/>
       <table>
         <div>
-          <ul>
-            <li>Office: {{name.name}}</li>
-            <li>Official: {{name.person}}</li>
-            <li>Party: {{name.party}}</li>
+          <table>
+            <tr>Office: {{name.name}}</tr>
+            <tr>Official: {{name.person}}</tr>
+            <tr>Party: {{name.party}}</tr>
             <!-- <td>{{name.photo}}</td> -->
             <!-- <td>{{name.url}}</td> -->
-            <li>
+            <tr>
               <a href="{{name.url}}" class="btn btn-info" role="button">Home Page</a>
-            </li>
+              <app-bookmark url="{{name.url}}" name="{{name.person}}"></app-bookmark>
+            </tr>
             
-          </ul>
+          </table>
         </div>
           
       </table>
