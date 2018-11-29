@@ -8,10 +8,10 @@ import { map } from 'rxjs/operators'
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent implements OnInit {
-  username = 'username';
-  password = 'password';
-  email = 'email';
-  address = 'address';
+  username = '';
+  password = '';
+  email = '';
+  address = '';
   result: any;
   createUserUrl = '';
   User = {

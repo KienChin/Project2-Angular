@@ -8,8 +8,8 @@ import { map } from 'rxjs/operators'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username = 'username';
-  password = 'password';
+  username = '';
+  password = '';
   result: any;
   loginUrl = '';
   // UserCred = {
@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
     console.log(this.username);
     console.log(this.password);
     
-    this.loginUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/users/login?username=${this.username}&password=${this.password}`
+    //this.loginUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/users/login?username=${this.username}&password=${this.password}`
 
     // Stephen's local, non-git URL
-    //this.loginUrl = `http://localhost:8080/Proj2Vote/login?username=${this.username}&password=${this.password}`
+    this.loginUrl = `http://localhost:8080/Proj2Vote/login`
 
     this.loginUserService().subscribe(result => {
       this.result = result;
@@ -52,7 +52,9 @@ export class LoginComponent implements OnInit {
   }
   loginUserService() {
     //let body = `username=${this.username}&password=${this.password}`;
-    return this.http.get<any[]>(this.loginUrl).pipe(map(data => data));
+    //return this.http.get<any[]>(this.loginUrl).pipe(map(data => data));
+    return this.http.post<any[]>(this.loginUrl, 
+      this.username+" "+this.password).pipe(map(data => data));
   }  
   
   // loginUserService() {
