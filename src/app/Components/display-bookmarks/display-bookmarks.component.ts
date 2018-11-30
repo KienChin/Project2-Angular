@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
+//import { HelperServiceService } from 'src/app/Services/helper-service.service';
 
 @Component({
   selector: 'app-display-bookmarks',
@@ -13,9 +14,11 @@ export class DisplayBookmarksComponent implements OnInit {
   dispBook = false;
   bookmarks: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient){}//, private sessionService: HelperServiceService) { }
+
 
   ngOnInit() {
+    //console.log(this.sessionService.currentUser.user_id)
   }
 
   displayBookmarks(): void{
@@ -34,7 +37,7 @@ export class DisplayBookmarksComponent implements OnInit {
       fname: '',
       lname: '',
       email: '',
-      Address: {adr_id: 0,
+      address: {adr_id: 0,
                 city: '',
                 state: '',
                 str_adr: '',

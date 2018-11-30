@@ -9,6 +9,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { CreateUserComponent } from './Components/create-user/create-user.component';
 import { BookmarkComponent } from './Components/bookmark/bookmark.component';
 import { DisplayBookmarksComponent } from './Components/display-bookmarks/display-bookmarks.component';
+import { HelperServiceService } from './Services/helper-service.service';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { DisplayBookmarksComponent } from './Components/display-bookmarks/displa
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [HelperServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

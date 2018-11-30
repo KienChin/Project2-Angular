@@ -16,7 +16,7 @@ export class CreateUserComponent implements OnInit {
   email = '';
   address = '';
   result: any;
-  createUserUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/users/create`;
+  createUserUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/user/create`;
   User = {}
   httpOptions = {
     headers: new HttpHeaders({
@@ -53,6 +53,7 @@ export class CreateUserComponent implements OnInit {
     
     this.submitUserService().subscribe(result => {
       this.result = result;
+      
       console.log(this.result);
     })
 

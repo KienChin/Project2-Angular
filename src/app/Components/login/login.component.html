@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="loggedIn == false">
   <div>
       <input type="text" id="username" placeholder="username" [(ngModel)] = "username"/> 
   </div>
@@ -9,4 +9,7 @@
   <div>
     <button id="submit" (click)='loginUser()' class="btn btn-primary">Log In</button>
   </div>
+</div>
+<div *ngIf="loggedIn">
+  Welcome {{result.username}}
 </div>
