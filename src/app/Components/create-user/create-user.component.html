@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="displayForm">
     <div>
         <input type="text" id="firstname" placeholder="firstname" [(ngModel)] = "firstname"/> 
     </div>
@@ -20,4 +20,11 @@
     <div>
       <button id="submit" (click)='submitUser()' class="btn btn-primary">Sign Up</button>
     </div>
-  </div>
+</div>
+<div *ngIf="displayUser">
+  <h3>Congratulations, {{username}}!</h3> 
+  <p>Your account has been created. You may now log in.</p>
+</div>
+<div *ngIf="displayFail">
+  <h4>Sorry, account creation failed.</h4>
+</div>
