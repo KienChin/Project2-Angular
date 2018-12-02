@@ -40,6 +40,8 @@
   <div *ngIf="displayPoll">
       <button id="theButton" (click)='reset()' class="btn btn-info"> Clear
         </button>
+        <br>
+      <div>{{normalizedInput}}</div>
     <div *ngFor="let pl of pollingLocations">
         <div>
           <ul>
