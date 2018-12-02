@@ -35,20 +35,21 @@
     </div>  
   </nav>
 
-<div class="container text-center">
-  <h3 id="search-heading">
-      <i class="fas fa-search"></i> Search
-  </h3>
-  <div class="row">      
-    <div class="col-md-6">
-      <app-civic-info></app-civic-info>
+<div class="container text-center" style="margin-top:2%">
+  <div class="jumbotron">
+    <h3 id="search-heading">
+        <i class="fas fa-search"></i> Search
+    </h3>
+    <div class="row">      
+      <div class="col-md-6">
+        <app-civic-info></app-civic-info>
+      </div>
+      <div class="col-md-6">
+        <app-election-info></app-election-info>
+      </div>
     </div>
-    <div class="col-md-6">
-      <app-election-info></app-election-info>
-    </div>
-  </div>
-
-  <div *ngIf="true">
+</div>
+  <div *ngIf="true" class="jumbotron">
       <h3 id="user-heading">
           <i class="fas fa-user"></i> User
       </h3>
