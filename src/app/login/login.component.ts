@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { HelperServiceService } from 'C:/git_repos/Project2-Angular/src/app/Services/helper-service.service';
+import { HelperServiceService } from '../Services/helper-service.service';
 
 @Component({
   selector: 'app-login',
