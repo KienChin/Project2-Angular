@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { map } from 'rxjs/operators'
-//import { HelperServiceService } from 'src/app/Services/helper-service.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { HelperServiceService } from 'C:/git_repos/Project2-Angular/src/app/Services/helper-service.service';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +14,8 @@ export class LoginComponent implements OnInit {
   result: any;
   loginUrl = '';
   loggedIn = false;
-
-
   
-  constructor(private http: HttpClient){}//, private helpMe: HelperServiceService) { }
+  constructor(private http: HttpClient, private helpMe: HelperServiceService){ }
 
   ngOnInit() {
     
@@ -34,26 +32,29 @@ export class LoginComponent implements OnInit {
     
     //this.loginUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/user/login`
 
-    // Stephen's local, non-git URL
+    // Stephen's local URL
     this.loginUrl = `http://localhost:8080/Proj2Vote/user/login`;
     this.loginUserService().subscribe(result => {
       this.result = result;
-      //this.helpMe.makeSession(result);
+      this.helpMe.makeSession(result);
+      console.log("login response:");
       console.log(this.result);
       this.loggedIn = true;
+      console.log("session user:")
+      console.log(this.helpMe.getSession()); // check if makeSession succeeded
     })
 
   }
   loginUserService() {
     
-    let User = {
+    let user = {
       user_id: -1,
       username: this.username,
       pswd: this.password,
       fname: '',
       lname: '',
       email: '',
-      Address: {adr_id: 0,
+      address: {adr_id: 0,
                 city: '',
                 state_name: '',
                 str_adr: '',
@@ -61,13 +62,13 @@ export class LoginComponent implements OnInit {
               },
       perm: 0
     }
-    console.log(JSON.stringify(User));
+    console.log(JSON.stringify(user));
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<any[]>(this.loginUrl, JSON.stringify(User), httpOptions).pipe(map(data => data));
+    return this.http.post<object>(this.loginUrl, JSON.stringify(user), httpOptions).pipe(map(data => data));
   }  
   
 }
