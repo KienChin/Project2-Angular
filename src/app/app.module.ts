@@ -10,6 +10,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { DisplayBookmarksComponent } from './display-bookmarks/display-bookmarks.component';
 import { HelperServiceService } from './Services/helper-service.service';
+import { GetBookmarksComponent } from './get-bookmarks/get-bookmarks.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HelperServiceService } from './Services/helper-service.service';
     LoginComponent,
     CreateUserComponent,
     BookmarkComponent,
-    DisplayBookmarksComponent
+    DisplayBookmarksComponent,
+    GetBookmarksComponent
   ],
   imports: [
     BrowserModule,

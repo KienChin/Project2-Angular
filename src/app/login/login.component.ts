@@ -30,18 +30,21 @@ export class LoginComponent implements OnInit {
     console.log(this.username);
     console.log(this.password);
     
-    //this.loginUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/user/login`
+    this.loginUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/user/login`
 
     // Stephen's local URL
-    this.loginUrl = `http://localhost:8080/Proj2Vote/user/login`;
+    //this.loginUrl = `http://localhost:8080/Proj2Vote/user/login`;
     this.loginUserService().subscribe(result => {
       this.result = result;
-      this.helpMe.makeSession(result);
       console.log("login response:");
       console.log(this.result);
-      this.loggedIn = true;
-      console.log("session user:")
-      console.log(this.helpMe.getSession()); // check if makeSession succeeded
+      if(result){
+        this.helpMe.makeSession(result);
+        this.loggedIn = true;
+        console.log("session user:")
+        console.log(this.helpMe.getSession()); // check if makeSession succeeded
+      }
+
     })
 
   }

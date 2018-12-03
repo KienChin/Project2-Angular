@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders} from '@angular/common/http'
+import { HelperServiceService } from '../Services/helper-service.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bookmark',
@@ -10,10 +12,12 @@ export class BookmarkComponent implements OnInit {
 
   baseUrl = `http://ec2-54-210-42-186.compute-1.amazonaws.com:8080/Pipeline/bookmark/add`;
   bookUrl = '';
+  bookmark: any;
+  result:any;
 
   @Input() url: string;
   @Input() name: string;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private helpMe: HelperServiceService) { }
 
   ngOnInit() {
   }
@@ -25,13 +29,25 @@ export class BookmarkComponent implements OnInit {
     let str = this.name;
     let urlName = str.replace(re, "%20");
     this.bookUrl = `${this.baseUrl}?name=${urlName}&url=${this.url}`
-    let body = {
-      name: this.name,
+    this.bookmark = {
+      user_id: this.helpMe.getSession().user_id,
+      candidate: this.name,
       url: this.url
     }
     console.log(this.bookUrl);
-    this.http.post<any[]>(this.bookUrl, body);
+    console.log(this.http.post<number>(this.bookUrl, this.bookmark));
+    this.bookmarkService().subscribe(result => {
+      this.result = result;
+      console.log(this.result)
+    })
     
   }
-  
+  bookmarkService(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }
+    return  this.http.post<number>(this.bookUrl, this.bookmark, httpOptions).pipe(map(data => data));
+  }
 }
